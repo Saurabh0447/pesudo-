@@ -1,1 +1,27 @@
-
+#include<iostream>
+#include<algorithm>
+using namespace std;
+void swap(int *x, int *y)
+{
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
+void sortInWave(int arr[], int n)
+{
+    // Sort the input array
+    sort(arr, arr+n);
+ 
+    // Swap adjacent elements
+    for (int i=0; i<n-1; i += 2)
+        swap(&arr[i], &arr[i+1]);
+}
+int main()
+{
+    int arr[] = {83,1,45,95,45,52,11,47,0,45,67,82};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    sortInWave(arr, n);
+    for (int i=0; i<n; i++)
+       cout << arr[i] << " ";
+    return 0;
+}
